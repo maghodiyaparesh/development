@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CrystalFlights.Models\CrystalFlights.Models.csproj" />
+  </ItemGroup>
+
 </Project>
