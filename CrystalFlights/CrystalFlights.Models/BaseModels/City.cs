@@ -3,25 +3,21 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CrystalFlights.Models
 {
-    [Table("dr_Airport")]
-    public class Airport : BaseModel
+    [Table("dr_City")]
+    public class City : BaseModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Display(Name = "Airport Id")]
+        [Display(Name = "City Id")]
         public long Id { get; set; }
 
-        [Display(Name = "Airport Name")]
-        [Required(ErrorMessage = "Airport name is required")]
+        [Display(Name = "City Name")]
+        [Required(ErrorMessage = "City name is required")]
         public string? Name { get; set; }
 
-        [Display(Name = "Airport Code")]
-        [Required(ErrorMessage = "Airport code is required")]
+        [Display(Name = "City Code")]
+        [Required(ErrorMessage = "City code is required")]
         public string? Code { get; set; }
-
-        public string? CityCode { get; set; }
-
-        public string? CityName { get; set; }
 
         public string? StateCode { get; set; }
 
