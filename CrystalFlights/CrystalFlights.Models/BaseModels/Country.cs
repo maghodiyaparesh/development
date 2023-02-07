@@ -3,20 +3,20 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CrystalFlights.Models
 {
-    [Table("dr_Airline")]
-    public class Airline : BaseModel
+    [Table("dr_Country")]
+    public class Country : BaseModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Display(Name = "Airline Id")]
+        [Display(Name = "Country Id")]
         public long Id { get; set; }
 
-        [Display(Name = "Airline Name")]
-        [Required(ErrorMessage = "Airline name is required")]
+        [Display(Name = "Country Name")]
+        [Required(ErrorMessage = "Country name is required")]
         public string? Name { get; set; }
 
-        [Display(Name = "Airline Code")]
-        [Required(ErrorMessage = "Airline code is required")]
+        [Display(Name = "Country Code")]
+        [Required(ErrorMessage = "Country code is required")]
         public string? Code { get; set; }
     }
 }
