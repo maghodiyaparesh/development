@@ -4,6 +4,7 @@ namespace CrystalFlights.Models
 {
     public enum FeatureType : int
     {
+        Other = 0,
         User = 1,
         Client = 2,
         Flight = 3,

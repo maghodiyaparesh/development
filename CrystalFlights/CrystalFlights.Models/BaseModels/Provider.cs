@@ -33,7 +33,7 @@ namespace CrystalFlights.Models
 
         [CustomProperty(FieldName = "Address", FieldType = SqlDbType.VarChar, FieldLength = 255)]
         public string? Address { get; set; }
-
+        
         [CustomProperty(FieldName = "Email", FieldType = SqlDbType.VarChar, FieldLength = 50)]
         public string? Email { get; set; }
 

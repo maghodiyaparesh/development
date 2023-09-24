@@ -14,7 +14,7 @@ namespace CrystalFlights.Models
 
         [CustomProperty(FieldName = "Name", FieldType = SqlDbType.VarChar, FieldLength = 50)]
         public string? Name { get; set; }
-
+        
         [CustomProperty(FieldName = "Code", FieldType = SqlDbType.VarChar, FieldLength = 50)]
         public string? Code { get; set; }
 
