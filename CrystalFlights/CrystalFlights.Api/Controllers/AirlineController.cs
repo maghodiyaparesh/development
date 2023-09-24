@@ -81,7 +81,7 @@ namespace CrystalFlights.Api.Controllers
         {
             try
             {
-                if (airlineSave.AirlineId <= 0)
+                if (airlineSave.Id <= 0)
                     throw new Exception("Record not found.");
 
                 var airline = await _repo.Airline.UpdateAirline(_mapper.Map<Airline>(airlineSave));
@@ -101,7 +101,7 @@ namespace CrystalFlights.Api.Controllers
         {
             try
             {
-                if (airlineSave.AirlineId <= 0)
+                if (airlineSave.Id <= 0)
                     throw new Exception("Record not found.");
 
                 var airline = await _repo.Airline.DeleteAirline(_mapper.Map<Airline>(airlineSave));
