@@ -1,28 +1,50 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+using System.Data;
 
 namespace CrystalFlights.Models
 {
     [Table("dr_ClientCoupon")]
     public class ClientCoupon : BaseModel
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Display(Name = "Coupon Id")]
+        [CustomProperty(FieldName = "Id", FieldType = SqlDbType.BigInt)]
         public long Id { get; set; }
 
-        [Display(Name = "Coupon Name")]
-        [Required(ErrorMessage = "Coupon name is required")]
+        [CustomProperty(FieldName = "Name", FieldType = SqlDbType.VarChar, FieldLength = 50)]
         public string? Name { get; set; }
 
-        [Display(Name = "Coupon Code")]
-        [Required(ErrorMessage = "Coupon code is required")]
+        [CustomProperty(FieldName = "Code", FieldType = SqlDbType.VarChar, FieldLength = 20)]
         public string? Code { get; set; }
 
-        public AmountType AmountType { get; set; } = 0;
+        [CustomProperty(FieldName = "AmountType", FieldType = SqlDbType.Int)]
+        public int AmountTypeId
+        {
+            get { return (int)AmountType; }
+            private set { AmountType = (AmountType)value; }
+        }
 
-        public double Amount { get; set; }
+        [CustomProperty(IgnoreField = true)]
+        public AmountType AmountType { get; set; }
 
-        public int UserCount { get; set; }
+        [CustomProperty(FieldName = "Amount", FieldType = SqlDbType.Float)]
+        public double Amount { get; set; } = 0.00;
+
+        [CustomProperty(FieldName = "UsersCount", FieldType = SqlDbType.Int)]
+        public int UsersCount { get; set; } = 0;
+
+        public ClientCoupon() { }
+
+        public ClientCoupon(string name, string code, AmountType amountType, double amount, int usersCount, bool isActive, DateTime modifiedDate, long modifiedBy, DateTime createdDate, long createdBy)
+        {
+            this.Name = name;
+            this.Code = code;
+            this.AmountType = amountType;
+            this.Amount = amount;
+            this.UsersCount = usersCount;
+            this.IsActive = isActive;
+            this.ModifiedDate = modifiedDate;
+            this.ModifiedBy = modifiedBy;
+            this.CreatedDate = createdDate;
+            this.CreatedBy = createdBy;
+        }
     }
 }

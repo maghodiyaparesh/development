@@ -17,7 +17,7 @@ namespace CrystalFlights.BO
         public async Task<IEnumerable<Airline>> GetAllAirlinesAsync()
         {
             return await FindAll()
-                            .OrderBy(ow => ow.AirlineCode)
+                            .OrderBy(ow => ow.Code)
                             .ToListAsync();
         }
 
@@ -27,21 +27,21 @@ namespace CrystalFlights.BO
 
             if (airlineSearch.AirlineId > 0)
             {
-                airlines = airlines.Where(a => a.AirlineId == airlineSearch.AirlineId);
+                airlines = airlines.Where(a => a.Id == airlineSearch.AirlineId);
             }
             if (!string.IsNullOrEmpty(airlineSearch.AirlineCode))
             {
-                airlines = airlines.Where(a => a.AirlineCode.Equals(airlineSearch.AirlineCode));
+                airlines = airlines.Where(a => a.Code.Equals(airlineSearch.AirlineCode));
             }
             if (!string.IsNullOrEmpty(airlineSearch.AirlineName))
             {
-                airlines = airlines.Where(a => a.AirlineName.Equals(airlineSearch.AirlineName));
+                airlines = airlines.Where(a => a.Name.Equals(airlineSearch.AirlineName));
             }
             if (!string.IsNullOrEmpty(airlineSearch.AirlineSearchText))
             {
                 airlines = airlines.Where(a =>
-                                a.AirlineCode.Contains(airlineSearch.AirlineSearchText) ||
-                                a.AirlineName.Contains(airlineSearch.AirlineSearchText)
+                                a.Code.Contains(airlineSearch.AirlineSearchText) ||
+                                a.Name.Contains(airlineSearch.AirlineSearchText)
                                 );
             }
             if (airlineSearch.IsActive != null)
